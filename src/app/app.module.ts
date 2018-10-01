@@ -12,6 +12,18 @@ import { LugaresComponent } from "./lugares/lugares.component";
 import { ContactoComponent } from './contacto/contacto.component';
 import {LugaresService} from "./services/lugares.service";
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBnYmFLyuACAjv9vci7UFyPizP-s3vHuas",
+  authDomain: "tienda-19dd8.firebaseapp.com",
+  databaseURL: "https://tienda-19dd8.firebaseio.com",
+  storageBucket: "tienda-19dd8.appspot.com",
+  messagingSenderId: "783161463599"
+};
+
 const appRoutes: Routes = [
   { path: '', component: LugaresComponent },
   { path: 'lugares', component: LugaresComponent },
@@ -32,6 +44,9 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]
